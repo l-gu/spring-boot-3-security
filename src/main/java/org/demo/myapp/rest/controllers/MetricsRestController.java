@@ -19,15 +19,15 @@ public class MetricsRestController {
 		logger.info("controller created");
 	}
 
-	@GetMapping("/foo")
+	@GetMapping("/aaa")
     String httpGetPage1() {
-		logger.debug("/metrics/foo");
+		logger.debug("/metrics/aaa");
 		return "metrics : foo";
     }
 
-	@GetMapping("/bar")
+	@GetMapping("/bbb")
     String httpGetPage2() {
-		logger.debug("/metrics/bar");
+		logger.debug("/metrics/bbb");
 		return "metrics : bar";
     }
 

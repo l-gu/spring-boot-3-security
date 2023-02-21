@@ -12,7 +12,7 @@ spring:
 #--- logging config
 logging:
   level:
-#      root: INFO
+    root: INFO
 #      org.demo.myapp.rest.controllers: DEBUG
     org.demo.myapp: DEBUG
 #     org.demo.xxx: INFO

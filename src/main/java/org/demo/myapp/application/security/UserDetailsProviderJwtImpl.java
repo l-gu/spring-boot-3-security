@@ -55,6 +55,7 @@ public class UserDetailsProviderJwtImpl extends UserDetailsProvider {
 	private Jws<Claims> parseClaims(String jwtToken, String secretKey) throws JwtException {
 		JwtParser jwtParser = Jwts.parser();
 		if ( secretKey != null ) {
+			// Algo in JWT header 
 			jwtParser.setSigningKey(secretKey);
 		}
 		try {

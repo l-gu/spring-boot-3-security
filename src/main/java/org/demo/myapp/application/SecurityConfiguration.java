@@ -50,8 +50,8 @@ public class SecurityConfiguration {
 //			.anyRequest().authenticated() );
 	
 		httpSecurity.authorizeHttpRequests()
-			.requestMatchers("/auth/login", "/doc/**" ).permitAll() // Specify that URLs are allowed by anyone
-			.requestMatchers("/metrics/**" ).anonymous() // Specify that URLs are allowed by anonymous users
+			.requestMatchers("/metrics/**", "/doc/**" ).permitAll() // Specify that URLs are allowed by anyone
+			.requestMatchers("/anonymous/**" ).anonymous() // Specify that URLs are allowed by anonymous users
 			.requestMatchers("/admin/**" ).hasRole("ADMIN") // Specify that URLs are allowed by anonymous users
 			.requestMatchers(HttpMethod.DELETE).hasAnyRole("USER", "ADMIN")  // Specifies a user requires a role
 			.anyRequest().authenticated() ; // Specify that URLs are allowed by any authenticated user
