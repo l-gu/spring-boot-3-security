@@ -1,0 +1,21 @@
+# server:
+#   port: 8080
+
+#--- spring config
+spring:
+#   application:
+#     name: My basic application
+#   profiles:
+#     active: default
+#   main:
+#     banner-mode: off
+#--- logging config
+logging:
+  level:
+#      root: INFO
+#      org.demo.myapp.rest.controllers: DEBUG
+    org.demo.myapp: DEBUG
+#     org.demo.xxx: INFO
+app:
+  jwt:
+    secretKey: abcdefgABCDEFG 
