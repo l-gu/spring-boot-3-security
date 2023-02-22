@@ -36,8 +36,8 @@ public class AuthenticatedUserFilter extends OncePerRequestFilter {
 		log.info("[SECURITY] AuthenticatedUserFilter constructor, jwtSecretKey : '{}' ", jwtSecretKey);
 		
 		// choose implementation :
-		//userDetailsProvider = new UserDetailsProviderJwtImpl(jwtSecretKey);
-		userDetailsProvider = new UserDetailsProviderFakeImpl();
+		userDetailsProvider = new UserDetailsProviderJwtImpl(jwtSecretKey);
+		//userDetailsProvider = new UserDetailsProviderFakeImpl();
 	}
 
 	@Override

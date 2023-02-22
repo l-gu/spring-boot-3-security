@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.xml.bind.DatatypeConverter;
 
-import org.demo.myapp.application.security.JwtException;
+import org.demo.myapp.application.security.jwt.JwtException;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
