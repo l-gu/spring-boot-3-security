@@ -1,4 +1,4 @@
-package org.demo.myapp.application.security.jwt;
+package org.demo.myapp.security.jwt;
 
 import java.util.Date;
 

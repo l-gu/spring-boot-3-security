@@ -1,6 +1,6 @@
 package org.demo.myapp.application;
 
-import org.demo.myapp.application.security.AuthenticatedUserFilter;
+import org.demo.myapp.security.AuthenticatedUserFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +31,7 @@ public class SecurityConfiguration {
 		//--- CSRF configuration : Starting from Spring Security 4.x, the CSRF protection is enabled by default.
 		// httpSecurity.csrf().disable();
 		
+		//--- CORS 
 		httpSecurity.cors().disable();
 		
 		//--- "remember me" Spring authentication
@@ -39,16 +40,6 @@ public class SecurityConfiguration {
 		httpSecurity.rememberMe().disable();
 		
 		//--- Define if URLs are always allowed or only for authenticated user.
-
-//		httpSecurity.authorizeHttpRequests( (authorizeRequests) -> 
-//			authorizeRequests.anyRequest().authenticated() );
-		
-//		httpSecurity.authorizeHttpRequests( (authorizeRequests) -> 
-//			authorizeRequests
-//			.requestMatchers("/auth/login", "/doc/**" ).permitAll()
-//			.requestMatchers(HttpMethod.DELETE).hasRole("ADMIN")
-//			.anyRequest().authenticated() );
-	
 		httpSecurity.authorizeHttpRequests()
 			.requestMatchers("/metrics/**", "/doc/**" ).permitAll() // Specify that URLs are allowed by anyone
 			.requestMatchers("/anonymous/**" ).anonymous() // Specify that URLs are allowed by anonymous users
@@ -56,6 +47,10 @@ public class SecurityConfiguration {
 			.requestMatchers(HttpMethod.DELETE).hasAnyRole("USER", "ADMIN")  // Specifies a user requires a role
 			.anyRequest().authenticated() ; // Specify that URLs are allowed by any authenticated user
 		
+		//--- Session management 
+		// STATELESS : Spring Security will never create an HttpSession and it will never use it to obtain the SecurityContext
+		httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
 		//--- Define behavior if user is not authenticated :
 		// httpBasic(...) : configures HTTP Basic authentication : user/password asked by browser dialog box
 		// httpSecurity.httpBasic(withDefaults()); // withDefaults() : returns a Customizer that does not alter the input argument
@@ -65,12 +60,7 @@ public class SecurityConfiguration {
 		
 		// if nothing defined => return http status 403 Forbidden
 
-		//--- Session management 
-		// STATELESS : Spring Security will never create an HttpSession and it will never use it to obtain the SecurityContext
-		httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
 		//--- Add "AuthenticatedUserFilter" before "UsernamePasswordAuthenticationFilter" (one of the known Filter classes)
-//		Filter authenticatedUserFilter = new AuthenticatedUserFilter() ;
 		httpSecurity.addFilterBefore(authenticatedUserFilter, UsernamePasswordAuthenticationFilter.class);
 		
 		return httpSecurity.build();

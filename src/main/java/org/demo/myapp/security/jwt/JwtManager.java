@@ -1,4 +1,4 @@
-package org.demo.myapp.application.security.jwt;
+package org.demo.myapp.security.jwt;
 
 import java.security.Key;
 import java.util.Date;
@@ -34,10 +34,6 @@ public class JwtManager {
 	public JwtManager(String issuer, JwsAlgorithm jwsAlgorithm, Key key) {
 		this(issuer, jwsAlgorithm, null, key);
 	}
-
-//	public JwtManager(String issuer) {
-//		this(issuer, null, null, null);
-//	}
 
 	/**
 	 * Parses the given JWT with the given secret key
@@ -85,7 +81,7 @@ public class JwtManager {
 		jwtBuilder.setIssuedAt(new Date(System.currentTimeMillis()));
 		// Add other claims 
 		if ( claims != null ) {
-			// setClaims replaces all the claims : jwtBuilder.setClaims(claims); 
+			// 'setClaims' replaces all claims => use 'addClaims' instead
 			jwtBuilder.addClaims(claims); // "add" : add only if not yet exist
 		}
 		// Define signature algorithm and key

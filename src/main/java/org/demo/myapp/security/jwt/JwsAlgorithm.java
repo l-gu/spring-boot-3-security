@@ -1,4 +1,4 @@
-package org.demo.myapp.application.security.jwt;
+package org.demo.myapp.security.jwt;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -8,9 +8,9 @@ import io.jsonwebtoken.SignatureAlgorithm;
  */
 public enum JwsAlgorithm {
 
-	HS256(SignatureAlgorithm.HS256, false),  // No Key HMAC only
-	HS384(SignatureAlgorithm.HS384, false),  // No Key HMAC only
-	HS512(SignatureAlgorithm.HS512, false),  // No Key HMAC only
+	HS256(SignatureAlgorithm.HS256, false),  // No Key (HMAC only)
+	HS384(SignatureAlgorithm.HS384, false),  // No Key (HMAC only)
+	HS512(SignatureAlgorithm.HS512, false),  // No Key (HMAC only)
 
 	RS256(SignatureAlgorithm.RS256, true), 
 	RS384(SignatureAlgorithm.RS384, true),

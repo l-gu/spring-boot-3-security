@@ -27,7 +27,7 @@ public class HelloRestController {
 		logger.info("controller created");
 	}
 
-    @RolesAllowed({"AAA", "BBB"})
+    @RolesAllowed({Role.STANDARD, Role.MANAGER})
 	@GetMapping("")
     String httpGet() {
 		logger.debug("hello");
@@ -49,18 +49,24 @@ public class HelloRestController {
 		return "Hello";
     }
 
-    @RolesAllowed("BBB")
     @GetMapping("/{name}")
     String httpRestPing(@PathVariable String name) {
 		logger.debug("hello/{}", name);
 		return "Hello " + name;
     }
 
-    @RolesAllowed("ADMIN")
+    @RolesAllowed(Role.ADMIN)
     @GetMapping("/admin")
     String httpGetAdmin() {
 		logger.debug("hello/admin");
 		return "Hello : admin ";
+    }
+
+    @RolesAllowed(Role.MANAGER)
+    @GetMapping("/manager")
+    String httpGetManager() {
+		logger.debug("hello/manager");
+		return "Hello : manager ";
     }
 
 }

@@ -1,4 +1,4 @@
-package org.demo.myapp.application.security;
+package org.demo.myapp.security;
 
 import java.io.IOException;
 
@@ -35,9 +35,8 @@ public class AuthenticatedUserFilter extends OncePerRequestFilter {
 		super();
 		log.info("[SECURITY] AuthenticatedUserFilter constructor, jwtSecretKey : '{}' ", jwtSecretKey);
 		
-		// choose implementation :
-		userDetailsProvider = new UserDetailsProviderJwtImpl(jwtSecretKey);
-		//userDetailsProvider = new UserDetailsProviderFakeImpl();
+		// UserDetailsProvider implementation based on JWT
+		userDetailsProvider = new UserDetailsProviderJwt(jwtSecretKey);
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package org.demo.myapp.application.security.jwt;
+package org.demo.myapp.security.jwt;
 
 public class JwtException extends Exception {
 

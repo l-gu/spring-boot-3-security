@@ -1,4 +1,4 @@
-package org.demo.myapp.application.security.jwt;
+package org.demo.myapp.security.jwt;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -8,6 +8,10 @@ import java.security.Key;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.demo.myapp.security.jwt.JwsAlgorithm;
+import org.demo.myapp.security.jwt.JwtException;
+import org.demo.myapp.security.jwt.JwtManager;
+import org.demo.myapp.security.jwt.JwtToken;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

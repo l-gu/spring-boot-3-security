@@ -1,4 +1,4 @@
-package org.demo.myapp.application.security;
+package org.demo.myapp.security;
 
 import java.util.Collection;
 
